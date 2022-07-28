@@ -6,6 +6,7 @@ function RandomButton({addPlaneteer, url}) {
     const randomPlaneteer = getRandomPlaneteer();
     console.log("For the advanced deliverables", randomPlaneteer);
 
+    //There has to be a better alternative to making a new object temporarily
     const tempPlaneteer = {
       "name": randomPlaneteer['name'],
       "fromUSA": randomPlaneteer['fromUSA'],
