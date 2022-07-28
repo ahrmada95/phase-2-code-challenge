@@ -1,10 +1,14 @@
 import React from "react";
 
-function SearchBar({onSearch}) {
+function SearchBar({onSearch, onSort}) {
   return (
     <div className="search">
-      <input type="text" className="searchTerm" onChange={(event) => onSearch(event.target.value)}/> {/*on keypress, send change up to parent}
-      {/* For the advanced deliverables: add a checkbox to allow sorting the planeteer */}
+      <input type="text" className="searchTerm" onChange={(event) => onSearch(event.target.value)}/> {/*on keypress, send change up to parent}*/
+        <label>
+          <input type="checkbox" onChange={onSort}/>
+          Sort by Age
+        </label>
+      }
     </div>
   );
 }
