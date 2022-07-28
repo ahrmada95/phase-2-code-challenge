@@ -1,22 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Planeteer() {
+function Planeteer({planeteer}) {
+  const [cardTextStatus, setCardTextStatus] = useState(true); //true -> bio shown; false -> quote shown
+  //THIS STATE WILL CHANGE ON BUTTON PRESS, TRIGGER RENDER OF INDIVIDUAL CARD
+
+  const isOverSeas = (planeteer['fromUSA'] === true);
+
+  const handleText = () => {
+    setCardTextStatus(!cardTextStatus);
+  }
+
   return (
     <li className="cards__item">
       <div className="card">
         <img
-          src={"RENDER IMAGE"}
-          alt={"RENDER PERSON NAME"}
+          src={planeteer['pictureUrl']}
+          alt={planeteer['name']}
           className="card__image"
         />
         <div className="card__content">
-          <div className="card__title">{"RENDER NAME"}</div>
-          <p className="card__text">{"CONDITIONALLY RENDER BIO OR QUOTE"}</p>
+          <div className="card__title">{planeteer['name']}</div>
+          <p className="card__text" onClick={handleText}>{cardTextStatus ? planeteer['bio'] : planeteer['quote']}</p>
           <div className="card__detail">
-            <p>{"RENDER TWITTER HANDLE"}</p>
+            <p>{planeteer['twitter']}</p>
             <p>
               {
-                "CONDITIONALLY RENDER WHETHER THE PERSON IS USA-BASED OR WORKING OVERSEAS"
+                isOverSeas ? ('USA-BASED') : ("WORKING OVERSEAS")
               }
             </p>
           </div>
